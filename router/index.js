@@ -21,6 +21,7 @@ module.exports = (app) => {
     });
 
     app.post('/message', (req, res) => {
+        console.log(req.body.content);
         res.send(JSON.stringify(menuRespond));
     });
 }
