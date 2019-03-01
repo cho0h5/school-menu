@@ -1,28 +1,9 @@
-<?php
-$string = file_get_contents("./menu.json");
-$json = json_decode($string,true);
-
-$data = json_decode(file_get_contents('php://input'),true);
-$content = $data["content"];
-
-if($content == "Today menu"){
-$r1 = <<<EOD
 {
     "message" : {
-	"text" : "
-EOD;
-$r2 = <<<EOD
-"
+	"text" : "\uc624\ub298\uae09\uc2dd\n\n\uba78\uce58\uc8fc\uba39\ubc25\n\uc794\uce58\uad6d\uc218\n\ub2ed\ubd09\uad6c\uc774\n\uc640\ud50c&\uca08\n\ubc30\ucd94\uae40\uce58"
     },
     "keyboard" : {
         "type" : "buttons",
-        "buttons" : ["Today menu"]
+        "buttons" : ["Menu"]
     }
 }
-EOD;
-
-echo $r1.$json['menu'].$r2;
-
-}
-
-?>

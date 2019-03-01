@@ -2,7 +2,7 @@
 echo <<< EOD
 {
     "type" : "buttons",
-    "buttons" : ["Today menu"]
+    "buttons" : ["Menu"]
 }
 
 EOD;
