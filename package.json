@@ -1,0 +1,22 @@
+{
+  "name": "school-menu",
+  "version": "2.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dominoyh5/school-menu.git"
+  },
+  "author": "Youngho Cho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dominoyh5/school-menu/issues"
+  },
+  "homepage": "https://github.com/dominoyh5/school-menu#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
