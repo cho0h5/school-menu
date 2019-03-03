@@ -5,5 +5,5 @@ const myurl = 'https://stu.goe.go.kr/sts_sci_md01_001.do?schulCode=J100000749&sc
 
 request.get(myurl, (error, response, body) => {
     let $ = cheerio.load(body);
-    let arr = $()
+    console.log($);
 });
