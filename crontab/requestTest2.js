@@ -9,10 +9,12 @@ request.get(myurl, (error, response, body) => {
 
     const $ = cheerio.load(body);
     $(selector).each((i) => {
+        
+        console.log($(this));
 
-        for(let j = 4; j < $(this).children.length; j += 2){
-            console.log($(this));
-        } 
+        //for(let j = 4; j < $(this).children.length; j += 2){
+        //    console.log($(this).data);
+        //} 
         console.log();
     });
 });
