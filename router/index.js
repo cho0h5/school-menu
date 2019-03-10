@@ -19,10 +19,11 @@ module.exports = (app, fs) => {
     app.post('/message', (req, res) => {
         
         let menu = "";
+
         if(req.body.content === "오늘의 메뉴")
-            menu = _getMenu(_getDay(), fs);
-        else
-            menu = _getMenu(_getDay()+1, fs);
+            menu = _getMenu(_getDate(), fs);
+        else if(req.body.content === "내일의 메뉴")
+            menu = _getMenu(_getDate()+1, fs);
 
         let messageResponse = {
             "message": {
@@ -33,19 +34,19 @@ module.exports = (app, fs) => {
                 "buttons": ["오늘의 메뉴", "내일의 메뉴"]
             }
         }
-        
+
         res.send(JSON.stringify(messageResponse));
     });
 }
 
-function _getDay(){
+function _getDate(){
     const date = new Date();
-    return date.getDay();
+    return date.getDate();
 }
 
-function _getMenu(day, fs){
-    let response = "";
+function _getMenu(date, fs){
+    let menuArr = "";
     let data = JSON.parse(fs.readFileSync('./data/menu.json', 'utf8'));
-    response = data["menu"][day];
-    return response;
+    menuArr = data[String(date)];
+    return menuArr.join('\n');
 }
