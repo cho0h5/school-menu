@@ -27,6 +27,7 @@ request.get(myurl, (error, response, body) => {
 
     //console.log(menu)
 
-    fs.writeFileSync(`../data/menu.json`, JSON.stringify(menu, null, '\t'), 'utf-8')
+    fs.writeFileSync(`/home/pi/school-menu/data/menu.json`, JSON.stringify(menu, null, '\t'), 'utf-8')
+	console.log(JSON.stringify(menu,null,'\t'));
 
 });
