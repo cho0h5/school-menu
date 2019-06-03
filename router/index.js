@@ -46,7 +46,7 @@ function _getDate(){
 
 function _getMenu(date, fs){
     let menuArr = "";
-    let data = JSON.parse(fs.readFileSync('/home/pi/school-menu/data/menu.json', 'utf8'));
+    let data = JSON.parse(fs.readFileSync('../data/menu.json', 'utf8'));
     menuArr = data[String(date)];
     return menuArr.join('\n');
 }
