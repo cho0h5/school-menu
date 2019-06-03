@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(express.json());
 
