@@ -20,14 +20,14 @@ request.get(myurl, (error, response, body) => {
                 menu[numTmp] = menuTmp;
             }
             else{
-                menu[numTmp] = ["등록된 식단 정보가 없습니다."];
+                menu[numTmp] = [""];
             }
         }
     });
 
     //console.log(menu)
 
-    fs.writeFileSync(`/home/pi/school-menu/data/menu.json`, JSON.stringify(menu, null, '\t'), 'utf-8')
+    fs.writeFileSync(`../data/menu.json`, JSON.stringify(menu, null, '\t'), 'utf-8')
 	console.log(JSON.stringify(menu,null,'\t'));
 
 });

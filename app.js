@@ -6,7 +6,7 @@ const port = 3000;
 
 app.use(express.json());
 
-var router = require('/home/ec2-user/school-menu/router/index')(app, fs);
+var router = require('./router/index')(app, fs);
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
