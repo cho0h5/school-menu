@@ -23,11 +23,12 @@ module.exports = (app, fs) => {
     app.post('/message', (req, res) => {
         
         let menu = "";
+        const nextDates = _checkDate(fs)
 
-        if(req.body.content === "오늘의 메뉴")
-            menu = _getMenu(_getDate(), fs);
-        else if(req.body.content === "내일의 메뉴")
-            menu = _getMenu(_getDate()+1, fs);
+        if(req.body.content === Day[_getDay(nextDates[0])]+"요일 메뉴")
+            menu = _getMenu(nextDates[0], fs);
+        else if(req.body.content === Day[_getDay(nextDates[1])]+"요일 메뉴")
+            menu = _getMenu(nextDates[1], fs);
 
         let messageResponse = {
             "message": {
@@ -35,7 +36,7 @@ module.exports = (app, fs) => {
             },
             "keyboard": {
                 "type": "buttons",
-                "buttons": ["오늘의 메뉴", "내일의 메뉴"]
+                "buttons": [Day[_getDay(nextDates[0])]+"요일 메뉴", Day[_getDay(nextDates[1])]+"요일 메뉴"]
             }
         }
 
