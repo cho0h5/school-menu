@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import datetime
+import re
 
 file_path = 'menu.json'
 
@@ -27,15 +28,18 @@ def parseMenu(url, month):      #크롤링해서 finalMenu dict에 추가
     menu = []
     for i in soup:
         menu.append(str(i)[5:-6].split('<br/>'))
-    for i in menu:
-        if i[0].isdecimal():        #날짜가 있는 테이블 칸인지
-            if len(i[0]) == 1:
-                i[0] = "0" + i[0]       #day가 한자리면 앞에 0추가
+    for i in range(len(menu)):
+        for j in range(len(menu[i])):
+            menu[i][j] = re.sub('(\d+[.])+', '', menu[i][j])
+            #print(menu[i][j])
+        if menu[i][0].isdecimal():        #날짜가 있는 테이블 칸인지
+            if len(menu[i][0]) == 1:
+                menu[i][0] = "0" + menu[i][0]       #day가 한자리면 앞에 0추가
 
-            if len(i) >= 2:     #메뉴 있으면 메뉴넣고
-                finalMenu[month+'/'+i[0]] = '\n'.join(i[2:-1])
+            if len(menu[i]) >= 2:     #메뉴 있으면 메뉴넣고
+                finalMenu[month+'/'+menu[i][0]] = '\n'.join(menu[i][2:-1])
             else:       #메뉴 없으면 ""넣고"
-                finalMenu[month+'/'+i[0]] = ""
+                finalMenu[month+'/'+menu[i][0]] = ""
 
 
 parseMenu(URL[0], currentMonth)     #이번달 메뉴 파싱
