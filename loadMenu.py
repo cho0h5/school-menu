@@ -37,7 +37,7 @@ def parseMenu(url, month):      #크롤링해서 finalMenu dict에 추가
                 menu[i][0] = "0" + menu[i][0]       #day가 한자리면 앞에 0추가
 
             if len(menu[i]) >= 2:     #메뉴 있으면 메뉴넣고
-                finalMenu[month+'/'+menu[i][0]] = '\n'.join(menu[i][2:-1])
+                finalMenu[month+'/'+menu[i][0]] = '\n'.join(menu[i][2:])
             else:       #메뉴 없으면 ""넣고"
                 finalMenu[month+'/'+menu[i][0]] = ""
 
