@@ -31,6 +31,8 @@ def parseMenu(url, month):      #크롤링해서 finalMenu dict에 추가
     for i in range(len(menu)):
         for j in range(len(menu[i])):
             menu[i][j] = re.sub('(\d+[.])+', '', menu[i][j])
+            menu[i][j] = re.sub('[*]', '', menu[i][j])
+            menu[i][j] = re.sub('&amp;', '&', menu[i][j])
             #print(menu[i][j])
         if menu[i][0].isdecimal():        #날짜가 있는 테이블 칸인지
             if len(menu[i][0]) == 1:
